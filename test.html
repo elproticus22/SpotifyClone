@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deezer Track Search</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center p-10">
+    <h1 class="text-3xl font-bold mb-4">Test</h1>
+    <input id="searchInput" type="text" placeholder="Search for a song..." 
+           class="text-black p-2 w-80 rounded-lg mb-4">
+    <button onclick="searchTracks()" class="bg-blue-500 px-4 py-2 rounded">Search</button>
+    <div id="results" class="mt-6 w-full max-w-xl"></div>
+
+    <script>
+        function searchTracks() {
+            const query = document.getElementById("searchInput").value;
+            if (!query) return;
+    
+            const script = document.createElement("script");
+            script.src = `https://api.deezer.com/search?q=${query}&output=jsonp&callback=displayResults`;
+            document.body.appendChild(script);
+        }
+    
+        function displayResults(data) {
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = "";
+    
+            data.data.forEach(track => {
+                const trackElement = document.createElement("div");
+                trackElement.classList.add("p-4", "bg-gray-800", "rounded-lg", "mb-4");
+                trackElement.innerHTML = `
+                    <img src="${track.album.cover_medium}" class="w-20 h-20 rounded mb-2">
+                    <p class="text-lg font-semibold">${track.title} - ${track.artist.name}</p>
+                    <audio controls class="mt-2">
+                        <source src="${track.preview}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                `;
+                resultsDiv.appendChild(trackElement);
+            });
+        }
+    </script>
+    
+</body>
+</html>

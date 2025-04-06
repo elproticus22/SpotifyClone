@@ -1,0 +1,80 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "../data/supabase";
+
+const Login = () => {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    function getEmail(e) {
+        setEmail(e.target.value);
+    }
+
+    function getPassword(e) {
+        setPassword(e.target.value);
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        if (!email || !password) {
+            alert("Por favor rellene todos los campos");
+        } else {
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email: email,
+                    password: password,
+                });
+
+                if (data.user) {
+                    navigate('/main');
+                }
+
+                if (error) {
+                    console.error("Hubo un error al iniciar sesión", error.message);
+                }
+            } catch (error) {
+                console.error("Hubo un error al iniciar sesión", error);
+            }
+        }
+    }
+
+    async function handleOAuthSignIn(provider) {
+        const { error } = await supabase.auth.signInWithOAuth({ provider });
+        if (error) console.error("Error con el inicio de sesión:", error.message);
+    }
+
+    return (
+        <>
+            <main className="bg-linear-to-b from-neutral-700 via-neutral-900 to-black h-screen flex items-center justify-center">
+                <section className="bg-neutral-900 p-10 rounded-lg text-white flex justify-center items-center flex-col">
+                    <img src="./src/assets/spotify-white-logo.png" alt="Spotify logo" className="h-10 w-10" />
+                    <h1 className="text-[30px] font-bold">Log in to Spotify</h1>
+                    <p className="font-sans text-xl mt-3">Ingresa tus datos abajo</p>
+                    <p className="font-sans text-xl mt-3 italic text-gray-500">
+                        No tienes cuenta? <Link to="/register" className="text-green-400">Crea una aquí</Link>
+                    </p>
+
+                    <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
+                        <input className="mt-4 p-2 w-64 border-2 border-gray-700 rounded-md bg-gray-800 text-white" onChange={getEmail} type="text" value={email} placeholder="Ingresa el E-Mail" />
+                        <input className="mt-4 p-2 w-64 border-2 border-gray-700 rounded-md bg-gray-800 text-white" onChange={getPassword} type="password" value={password} placeholder="Ingresa la contraseña" />
+                        <button className="mt-4 bg-green-500 hover:bg-green-600 text-white p-2 w-64 rounded-md" type="submit">Iniciar Sesión</button>
+                    </form>
+
+                    <div className="mt-6 flex flex-col items-center w-full">
+                        <p className="text-gray-400 text-sm">O continúa con</p>
+
+                        {/* Direct links for authentication */}
+                        <Link to="/phone-auth" className="mt-2 w-64 bg-gray-800 text-white p-2 rounded-md text-center">📱 Continuar con Número</Link>
+                        <button onClick={() => handleOAuthSignIn('google')} className="mt-2 w-64 bg-red-500 hover:bg-red-600 text-white p-2 rounded-md">🔴 Continuar con Google</button>
+                        <button onClick={() => handleOAuthSignIn('apple')} className="mt-2 w-64 bg-black hover:bg-gray-800 text-white p-2 rounded-md">🍏 Continuar con Apple</button>
+                        <button onClick={() => handleOAuthSignIn('facebook')} className="mt-2 w-64 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md">🔵 Continuar con Facebook</button>
+                    </div>
+                </section>
+            </main>
+        </>
+    );
+};
+
+export default Login;
