@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "../data/supabase";
-import logo from '../src/assets/spotify-white-logo.png'
+import logo from 'src/assets/spotify-white-logo.png'
 
 const register = () => {
   const navigate = useNavigate();
