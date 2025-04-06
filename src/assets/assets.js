@@ -41,6 +41,7 @@ import img16 from './img16.jpg'
 import song1 from  './song1.mp3'
 import song2 from  './song2.mp3'
 import song3 from  './song3.mp3'
+import spotify_white from './spotify-white-logo.png'
 
 export const assets = {
     bell_icon,
