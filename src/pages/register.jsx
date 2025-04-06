@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "../data/supabase";
-import { assets } from "../assets/assets";
+import logo from '../assets/spotify-white-logo.png' 
 
 const register = () => {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ const register = () => {
       <section className="bg-neutral-900 px-12 py-10 rounded-lg w-full max-w-md text-white flex flex-col justify-center items-center">
         <header className="flex justify-center mb-8">
           <img
-            src={spotify_white}
+            src={logo}
             alt="Spotify Logo"
             className="h-10"
           />
