@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../data/supabase";
+import logo from '../assets/spotify-white-logo.png' 
 
 const login = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const login = () => {
     <main className="bg-linear-to-b from-neutral-700 via-neutral-900 to-black h-full flex items-center justify-center grid-flow-col flex-col">
 
         <section className="bg-neutral-900 p-40 rounded-lg text-white flex justify-center items-center flex-col mt-8 h-150 ">
-        <img src="./src/assets/spotify-white-logo.png" alt="Spotify logo" className="h-10 w-10"/>
+        <img src={logo} alt="Spotify logo" className="h-10 w-10"/>
         <h1 className="text-[30px] font-bold">Log in to spotify</h1>
 
         <form onSubmit={handleSubmit} className="flex flex-col items-center mt-10">

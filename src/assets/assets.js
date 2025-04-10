@@ -38,9 +38,10 @@ import img13 from './img13.jpg'
 import img14 from './img14.jpg'
 import img15 from './img15.jpg'
 import img16 from './img16.jpg'
-import song1 from  './song1.mp3'
-import song2 from  '/song2.mp3'
-import song3 from  '/song3.mp3'
+import song1 from './song1.mp3'
+import song2 from './song2.mp3'
+import song3 from './song3.mp3'
+import spotify_white from './spotify-white-logo.png'
 
 export const assets = {
     bell_icon,
@@ -66,7 +67,8 @@ export const assets = {
     arrow_left,
     arrow_right,
     spotify_logo,
-    clock_icon
+    clock_icon,
+    spotify_white
 }
 
 export const albumsData = [
@@ -93,90 +95,68 @@ export const albumsData = [
     },
     {   
         id:3,
-        name: "Trending Global",
-        image: img16,
+        name: "Top 50 USA",
+        image: img11,
         desc:"Your weekly update of the most played tracks",
-        bgColor:"#44337a"
+        bgColor:"#2a4365"
     },
     {   
         id:4,
-        name: "Mega Hits,",
-        image: img11,
+        name: "Top 50 UK",
+        image: img12,
         desc:"Your weekly update of the most played tracks",
-        bgColor:"#234e52"
+        bgColor:"#22543d"
     },
     {   
         id:5,
-        name: "Happy Favorites",
+        name: "Top 50 France",
+        image: img13,
+        desc:"Your weekly update of the most played tracks",
+        bgColor:"#742a2a"
+    },
+    {   
+        id:6,
+        name: "Top 50 Germany",
+        image: img14,
+        desc:"Your weekly update of the most played tracks",
+        bgColor:"#2a4365"
+    },
+    {   
+        id:7,
+        name: "Top 50 Japan",
         image: img15,
         desc:"Your weekly update of the most played tracks",
-        bgColor:"#744210"
+        bgColor:"#22543d"
+    },
+    {   
+        id:8,
+        name: "Top 50 Brazil",
+        image: img16,
+        desc:"Your weekly update of the most played tracks",
+        bgColor:"#742a2a"
     }
 ]
 
 export const songsData = [
     {
         id:0,
-        name: "Song One",
-        image: img1,
-        file:song1,
-        desc:"Put a smile on your face with these happy tunes",
-        duration:"3:00"
+        name:"Song 1",
+        desc:"Artist 1",
+        image:img1,
+        audio:song1
     },
     {
         id:1,
-        name: "Song Two",
-        image: img2,
-        file:song2,
-        desc:"Put a smile on your face with these happy tunes",
-        duration:"2:20"
+        name:"Song 2",
+        desc:"Artist 2",
+        image:img2,
+        audio:song2
     },
     {
         id:2,
-        name: "Song Three",
-        image: img3,
-        file:song3,
-        desc:"Put a smile on your face with these happy tunes",
-        duration:"2:32"
-    },
-    {
-        id:3,
-        name: "Song Four",
-        image: img4,
-        file:song1,
-        desc:"Put a smile on your face with these happy tunes",
-        duration:"2:50"
-    },
-    {
-        id:4,
-        name: "Song Five",
-        image: img5,
-        file:song2,
-        desc:"Put a smile on your face with these happy tunes",
-        duration:"3:10"
-    },
-    {
-        id:5,
-        name: "Song Six",
-        image: img14    ,
-        file:song3,
-        desc:"Put a smile on your face with these happy tunes",
-        duration:"2:45"
-    },
-    {
-        id:6,
-        name: "Song Seven",
-        image: img7,
-        file:song1,
-        desc:"Put a smile on your face with these happy tunes",
-        duration:"2:18"
-    },
-    {
-        id:7,
-        name: "Song Eight",
-        image: img12,
-        file:song2,
-        desc:"Put a smile on your face with these happy tunes",
-        duration:"2:35"
+        name:"Song 3",
+        desc:"Artist 3",
+        image:img3,
+        audio:song3
     }
 ]
