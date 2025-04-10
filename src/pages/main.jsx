@@ -4,7 +4,7 @@ import Player from '../Components/player'
 import Display from '../Components/display'
 import { PlayerContext } from '../context/PlayerContext'
 
-const main = () =>{
+const Main = () =>{
     
     const {audioRef, track} = useContext(PlayerContext)
 
@@ -20,4 +20,4 @@ const main = () =>{
     )
 }
 
-export default main
+export default Main

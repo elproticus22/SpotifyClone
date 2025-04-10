@@ -4,6 +4,8 @@ import Login from './pages/login'
 import Register from './pages/register'
 import Main from './pages/main'
 import PlayerContextProvider from './context/PlayerContext'
+import DisplayHome from "./Components/display-home";
+import DisplayAlbum from "./Components/displayAlbum";
 
 function App() {
   return (
@@ -12,7 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/main/*'element={<PlayerContextProvider><Main /></PlayerContextProvider>} />
+        <Route path='/main/*' element={<PlayerContextProvider><Main /></PlayerContextProvider>} />
       </Routes>
     </Router>
     </>
